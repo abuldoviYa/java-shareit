@@ -9,7 +9,7 @@ public class ItemMapper {
         itemDto.setId(item.getId());
         itemDto.setName(item.getName());
         itemDto.setDescription(item.getDescription());
-        itemDto.setAvailable(item.isAvailable());
+        itemDto.setAvailable(item.getAvailable());
         itemDto.setOwnerId(item.getOwnerId());
         return itemDto;
     }

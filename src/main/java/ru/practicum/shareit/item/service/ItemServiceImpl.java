@@ -72,7 +72,7 @@ public class ItemServiceImpl implements ItemService {
     public List<ItemDto> searchItems(String searchText) {
         List<Item> items = itemRepository.searchItems(searchText);
         List<ItemDto> itemDtos = items.stream()
-                .filter(Item::isAvailable) // Consider only rentable items
+                .filter(Item::getAvailable)
                 .map(ItemMapper::toItemDto)
                 .collect(Collectors.toList());
         return itemDtos;
