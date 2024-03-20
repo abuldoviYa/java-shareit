@@ -1,6 +1,7 @@
 package ru.practicum.shareit.item.service;
 
 import org.springframework.stereotype.Service;
+import ru.practicum.shareit.error.ForbiddenException;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.mapper.ItemMapper;
 import ru.practicum.shareit.item.model.Item;
@@ -34,7 +35,7 @@ public class ItemServiceImpl implements ItemService {
         }
 
         if (!existingItem.getOwnerId().equals(ownerId)) {
-            return null;
+            throw new ForbiddenException("Forbidden, as owner is different");
         }
         if (itemDto.getName() != null && !itemDto.getName().isBlank()) {
             existingItem.setName(itemDto.getName());
